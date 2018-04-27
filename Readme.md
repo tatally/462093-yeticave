@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Тата](https://up.htmlacademy.ru/php/5/user/462093).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Попков](https://htmlacademy.ru/profile/id111287).
 
 ---
 
