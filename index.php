@@ -48,6 +48,17 @@ $products = [
     'image' => 'img/lot-6.jpg'
   ]
 ];
+$number = $products['price'];
+$ruble = '₽';
+ceil ($number);
+if ($number > 1000) : {
+  $format_price = number_format($number, 0, ',', ' ');
+}
+else : {
+  $format_price = number_format($number, 0, ',', '');
+}
+endif;
+$price = $format_price. ' ' .$ruble;
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -136,7 +147,7 @@ $products = [
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?=$item['price']; ?><b class="rub">р</b></span>
+                                <span class="lot__cost"><?=$price; ?></span>
                         </div>
                         <div class="lot__timer timer">
 
