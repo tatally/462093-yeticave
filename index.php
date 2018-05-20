@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Europe/Moscow");
 $is_auth = (bool) rand(0, 1);
 
 $title = 'YetiCave - Главная';
