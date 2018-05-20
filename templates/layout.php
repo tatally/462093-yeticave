@@ -43,7 +43,7 @@
     </div>
 </header>
 
-<main class="container"><?php require_once ("templates/index.php"); ?></main>
+<main class="container"><?= $content; ?></main>
 
 <footer class="main-footer">
     <nav class="nav">

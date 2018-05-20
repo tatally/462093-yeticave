@@ -58,5 +58,17 @@ function formatPrice($price)
   return $format_price;
 }
 require_once ("functions.php");
-require_once ("templates/layout.php");
+$page_content = include_template('templates/index.php', [
+  'products' => $products,
+  'categories' => $categories
+]);
+$layout_content = include_template('templates/layout.php',[
+  'content' => $page_content,
+  'is_auth' => $is_auth,
+  'user_name' => $user_name,
+  'user_avatar' => $user_avatar,
+  'title' => $title,
+  'categories' => $categories
+]);
+print($layout_content);
   ?>
