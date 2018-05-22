@@ -1,33 +1,41 @@
 CREATE DATABASE 462093_yeticave
   DEFAULT CHARACTER SET utf8
-  DEFAULT COLLATE utf8_general_ci;
+  COLLATE utf8_general_ci;
 
-CREATE TABLE categories (
+USE 462093_yeticave;
+
+CREATE TABLE category (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  category CHAR(64)
+  name VARCHAR(64)
 );
-CREATE TABLE lots (
+CREATE TABLE lot (
   id INT AUTO_INCREMENT PRIMARY KEY,
   date_start DATETIME,
-  title CHAR(64),
-  description CHAR(128),
-  image CHAR(128),
-  price_s INT,
+  title VARCHAR(64),
+  description VARCHAR(128),
+  image VARCHAR(128),
+  price INT,
   date_end DATETIME,
   rate_step INT
 );
 CREATE TABLE rate (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  date_rate INT,
-  price_rate INT,
+  date INT,
+  price INT,
 );
 CREATE TABLE user (
   id INT AUTO_INCREMENT PRIMARY KEY,
   reg_date DATETIME,
-  email CHAR(128),
-  name CHAR(128),
-  password CHAR (64),
-  avatar CHAR(128),
-  contacts INT
+  email VARCHAR(128),
+  name VARCHAR(128),
+  password VARCHAR (64),
+  avatar VARCHAR(128),
+  contacts VARCHAR(128)
 );
-CREATE UNIQUE INDEX email ON users(email);
+CREATE UNIQUE INDEX email ON user(email);
+CREATE UNIQUE INDEX name ON user(name);
+CREATE INDEX reg_date ON user(reg_date);
+CREATE INDEX title ON lot(title);
+CREATE INDEX price ON lot(price);
+CREATE INDEX date_start ON lot(date_start);
+CREATE INDEX date_end ON lot(date_end);
