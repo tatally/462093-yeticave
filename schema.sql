@@ -36,6 +36,7 @@ CREATE UNIQUE INDEX email ON user(email);
 CREATE UNIQUE INDEX name ON user(name);
 CREATE INDEX reg_date ON user(reg_date);
 CREATE INDEX title ON lot(title);
+CREATE INDEX description ON lot(description);
 CREATE INDEX price ON lot(price);
 CREATE INDEX date_start ON lot(date_start);
 CREATE INDEX date_end ON lot(date_end);
