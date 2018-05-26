@@ -21,11 +21,13 @@ function downcounter($time){
     if($check_time <= 0){
       return false;
     }
+    $days = floor($check_time/86400);
     $hours = floor(($check_time%86400)/3600);
     $minutes = floor(($check_time%3600)/60);
+    $days = str_pad($days, 2, "0", STR_PAD_LEFT);
     $hours = str_pad($hours, 2, "0", STR_PAD_LEFT);
     $minutes = str_pad($minutes, 2, "0", STR_PAD_LEFT);
-    $str = $hours.':'.$minutes;
+    $str = $days.'дн'.' '.$hours.':'.$minutes;
     return $str;
   }
  ?>
