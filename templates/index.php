@@ -31,7 +31,7 @@
           <?php foreach ($products as $item): ?>
             <li class="lots__item lot">
                     <div class="lot__image">
-                        <img src="<?=$item['image']; ?>" width="350" height="260" alt="<?=$item['alt']; ?>">
+                        <img src="<?=$item['image']; ?>" width="350" height="260" alt="image">
                     </div>
                     <div class="lot__info">
                         <span class="lot__category"><?=$item['category_name']; ?></span>

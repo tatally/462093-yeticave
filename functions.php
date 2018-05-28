@@ -13,21 +13,26 @@ function include_template($filePath, $params) {
     include_once($filePath);
     return ob_get_clean();
   }
-  /**
-    * Function for countdown time for the lots. Format hh:mm.
-    */
-function downcounter($time){
+/**
+  * Function for countdown time for the lots. Format dd hh:mm.
+  */
+function downcounter($time) {
     $check_time = strtotime($time) - time();
     if($check_time <= 0){
       return false;
     }
-    $days = floor($check_time/86400);
-    $hours = floor(($check_time%86400)/3600);
-    $minutes = floor(($check_time%3600)/60);
-    $days = str_pad($days, 2, "0", STR_PAD_LEFT);
-    $hours = str_pad($hours, 2, "0", STR_PAD_LEFT);
-    $minutes = str_pad($minutes, 2, "0", STR_PAD_LEFT);
+    $days = format_time($check_time/86400);
+    $hours = format_time(($check_time%86400)/3600);
+    $minutes = format_time(($check_time%3600)/60);
     $str = $days.'дн'.' '.$hours.':'.$minutes;
     return $str;
+    }
+/**
+  * Функция для форматирования времени в таймере обратного отсчета
+  */
+function format_time($timer) {
+  $timer = floor($timer);
+  $timer = str_pad($timer, 2, "0", STR_PAD_LEFT);
+  return $timer;
   }
  ?>
