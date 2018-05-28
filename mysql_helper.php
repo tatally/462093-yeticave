@@ -4,7 +4,7 @@
   */
 require_once ('config.php');
 function connect() {
-  $link = mysqli_connect($db['host'], $db['login'], $db['password'], $db['database_name']);
+  $link = mysqli_connect(db ['host'], db ['login'], db ['password'], db ['database_name']);
   mysqli_set_charset($link, 'utf8');
   if (!$link) {
       print('Ошибка MySQL: '. mysqli_connect_error());
@@ -18,7 +18,7 @@ function connect() {
 function db_get_categories($connection) {
   $categories = [];
   $sql = 'SELECT `id`, `name` FROM `category`';
-  $result = mysqli_query($link, $sql);
+  $result = mysqli_query($connection, $sql);
   if ($result) {
       $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
   }
@@ -34,7 +34,7 @@ function db_get_last_lots($connection) {
   .'ON `category_id`=`category`.`id`'
   .'WHERE `date_end` > NOW()'
   .'ORDER BY `lot`.`date_start` DESC LIMIT 9';
-  $res = mysqli_query($link, $sql);
+  $res = mysqli_query($connection, $sql);
   if ($res) {
       $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
     }
