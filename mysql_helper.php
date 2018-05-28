@@ -2,9 +2,9 @@
 /**
   * Подключение БД
   */
+require_once ('config.php');
 function connect() {
-  require_once ('config.php');
-  $link = mysqli_connect($bd['host'], $bd['login'], $bd['password'], $bd['database_name']);
+  $link = mysqli_connect($db['host'], $db['login'], $db['password'], $db['database_name']);
   mysqli_set_charset($link, 'utf8');
   if (!$link) {
       print('Ошибка MySQL: '. mysqli_connect_error());
@@ -15,21 +15,19 @@ function connect() {
 /**
   * Функция для отображения категорий из БД
   */
-function db_get_categories() {
-  $link = connect();
+function db_get_categories($connection) {
   $categories = [];
   $sql = 'SELECT `id`, `name` FROM `category`';
   $result = mysqli_query($link, $sql);
   if ($result) {
       $categories = mysqli_fetch_all($result, MYSQLI_ASSOC);
   }
-return $categories;
+  return $categories;
 }
 /**
   * Функция для отображения лотов из БД
   */
-function db_get_last_lots() {
-  // $link = connect();
+function db_get_last_lots($connection) {
   $products = [];
   $sql = 'SELECT `lot`.*, `category`.`name` as `category_name` FROM `lot`'
   .'JOIN `category`'

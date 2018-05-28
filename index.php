@@ -5,6 +5,7 @@ date_default_timezone_set("Europe/Moscow");
   */
 require_once ('functions.php');
 require_once ('mysql_helper.php');
+$connection = connect();
 
 $is_auth = (bool) rand(0, 1);
 $title = 'YetiCave - Главная';
@@ -20,17 +21,9 @@ function formatPrice($price)
   $format_price .= ' ₽';
   return $format_price;
 }
-/**
-  * Подключение функции для запроса категорий из БД
-  */
-$categories = db_get_categories();
-/**
-  * Подключение функции для запроса лотов из БД
-  */
-$products = db_get_last_lots();
-/**
-  * Подключение функций шаблонизации
-  */
+
+$categories = db_get_categories($connection);
+$products = db_get_last_lots($connection);
 $page_content = include_template('templates/index.php', [
         'products' => $products,
         'categories' => $categories
