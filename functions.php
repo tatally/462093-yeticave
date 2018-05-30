@@ -13,6 +13,16 @@ function include_template($filePath, $params) {
     include_once($filePath);
     return ob_get_clean();
   }
+  /**
+    * Функция форматирования стоимости лота
+    */
+  function formatPrice($price)
+  {
+    $format_price = ceil($price);
+    $format_price = number_format($format_price, 0, ',', ' ');
+    $format_price .= ' ₽';
+    return $format_price;
+  }
 /**
   * Function for countdown time for the lots. Format dd hh:mm.
   */
@@ -35,4 +45,8 @@ function format_time($timer) {
   $timer = str_pad($timer, 2, "0", STR_PAD_LEFT);
   return $timer;
   }
+
+// function page_for_lot_id() {
+//   $id =
+//   }
  ?>

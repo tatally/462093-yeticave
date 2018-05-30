@@ -40,6 +40,49 @@ function db_get_last_lots($connection) {
     }
 return $products;
 }
+/**
+  * Функция показа заголовка = наименование лота
+  */
+function db_get_lot_page_title($connection) {
+  $lot_page_title = [];
+  $sql = 'SELECT `title` FROM `lot`';
+  $result = mysqli_query($connection, $sql);
+  if ($result) {
+      $lot_page_title = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  }
+  return $lot_page_title;
+}
+/**
+  * Функция для отображения ставок для лота
+  */
+function db_get_rates($connection) {
+  $rates = [];
+  $sql = 'SELECT `rate`.*, `user`.`name` as `user_name` FROM `rate`'
+  .'JOIN `user`'
+  .'ON `user_id`=`user`.`id`'
+  .'WHERE `lot_id`= 5'
+  .'ORDER BY `date` DESC';
+  $result = mysqli_query($connection, $sql);
+  if ($result) {
+      $rates = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  }
+  return $rates;
+}
+/**
+  * Функция для отображения конкретного лота на странице
+  */
+// function db_get_page($connection) {
+//   $sql ='SELECT `lot`.*, `category`.`name` as `category_name` FROM `lot`'
+//   .'JOIN `category`'
+//   .'ON `category_id`=`category`.`id`'
+//   .'WHERE `id` = '$_GET['id'];
+//   $res = mysqli_prepare($connection, $sql);
+//   $stmt = db_get_prepare_stmt($connection, $sql, $_GET['id']);
+//   mysqli_stmt_execute($stmt);
+//   $res = mysqli_stmt_get_result($stmt);
+//   $rows = mysqli_fetch_all($res, MYSQLI_ASSOC);
+//   return $stmt;
+// }
 ?>
 
 <!-- /**

@@ -1,6 +1,6 @@
 <?php
 const db = [
-'host' => '188.225.76.71',
+'host' => '5.23.49.100',
 'login' => 'tata',
 'password' => 'Tata123.',
 'database_name' => '462093_yeticave'

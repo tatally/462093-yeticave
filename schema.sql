@@ -21,7 +21,7 @@ CREATE TABLE `lot` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `date_start` DATETIME,
   `title` VARCHAR(64),
-  `description` VARCHAR(128),
+  `description` VARCHAR(500),
   `category_id` INT,
   `image` VARCHAR(128),
   `price` INT,

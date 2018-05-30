@@ -1,30 +1,27 @@
 <?php
-date_default_timezone_set("Europe/Moscow");
-/**
-  * Подключение файлов с функцией шаблонизации и БД
-  */
 require_once ('functions.php');
 require_once ('mysql_helper.php');
 $connection = connect();
 
+if (isset($_GET['id']) && $_GET['id'] == $products['id']) {
+  return $layout_content;
+  }
+else {
+  http_response_code(404);
+  }
+
+$connection = connect();
 $is_auth = (bool) rand(0, 1);
-$title = 'YetiCave - Главная';
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
-// /**
-//   * Функция форматирования стоимости лота
-//   */
-// function formatPrice($price)
-// {
-//   $format_price = ceil($price);
-//   $format_price = number_format($format_price, 0, ',', ' ');
-//   $format_price .= ' ₽';
-//   return $format_price;
-// }
 
 $categories = db_get_categories($connection);
 $products = db_get_last_lots($connection);
-$page_content = include_template('templates/index.php', [
+// db_get_page($connection);
+$title_lot_page = db_get_lot_page_title($connection);
+$rates = db_get_rates($connection);
+
+$page_content = include_template('templates/page_lot.php', [
         'products' => $products,
         'categories' => $categories
       ]);
@@ -33,8 +30,9 @@ $layout_content = include_template('templates/layout.php', [
         'is_auth' => $is_auth,
         'user_name' => $user_name,
         'user_avatar' => $user_avatar,
-        'title' => $title,
-        'categories' => $categories
+        'title' => $title_lot_page,
+        'categories' => $categories,
+        'rates' => $rates
       ]);
 print($layout_content);
 ?>
